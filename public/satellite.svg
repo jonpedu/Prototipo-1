@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Corpo do satélite -->
+  <rect x="35" y="30" width="30" height="40" fill="url(#grad)" rx="2"/>
+  
+  <!-- Painéis solares -->
+  <rect x="10" y="35" width="20" height="30" fill="#fbbf24" stroke="#f59e0b" stroke-width="1"/>
+  <rect x="70" y="35" width="20" height="30" fill="#fbbf24" stroke="#f59e0b" stroke-width="1"/>
+  
+  <!-- Antena -->
+  <line x1="50" y1="30" x2="50" y2="15" stroke="#06b6d4" stroke-width="2"/>
+  <circle cx="50" cy="12" r="3" fill="#06b6d4"/>
+  
+  <!-- Detalhes -->
+  <circle cx="50" cy="45" r="4" fill="#1e3a8a"/>
+  <rect x="40" y="55" width="20" height="3" fill="#1e3a8a"/>
+  <rect x="40" y="60" width="20" height="3" fill="#1e3a8a"/>
+</svg>

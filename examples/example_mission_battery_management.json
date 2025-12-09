@@ -1,0 +1,191 @@
+{
+    "nodes": [
+        {
+            "id": "node_1729000001_abc123",
+            "type": "customNode",
+            "position": {
+                "x": 100,
+                "y": 100
+            },
+            "data": {
+                "label": "Verificar Bateria",
+                "icon": "🔋",
+                "color": "#eab308",
+                "blockType": "energy",
+                "blockId": "battery_check",
+                "categoryKey": "energy",
+                "properties": {
+                    "threshold": 30
+                },
+                "inputs": 1,
+                "outputs": 1
+            }
+        },
+        {
+            "id": "node_1729000002_def456",
+            "type": "customNode",
+            "position": {
+                "x": 350,
+                "y": 100
+            },
+            "data": {
+                "label": "Se... Então...",
+                "icon": "❓",
+                "color": "#8b5cf6",
+                "blockType": "logic",
+                "blockId": "if_condition",
+                "categoryKey": "logic",
+                "properties": {
+                    "condition": "charge_level > 50",
+                    "operator": ">"
+                },
+                "inputs": 1,
+                "outputs": 2
+            }
+        },
+        {
+            "id": "node_1729000003_ghi789",
+            "type": "customNode",
+            "position": {
+                "x": 600,
+                "y": 50
+            },
+            "data": {
+                "label": "Ativar Câmera",
+                "icon": "📷",
+                "color": "#10b981",
+                "blockType": "sensor",
+                "blockId": "camera",
+                "categoryKey": "sensors",
+                "properties": {
+                    "resolution": "1920x1080",
+                    "exposure": 100,
+                    "format": "JPEG"
+                },
+                "inputs": 1,
+                "outputs": 1
+            }
+        },
+        {
+            "id": "node_1729000004_jkl012",
+            "type": "customNode",
+            "position": {
+                "x": 850,
+                "y": 50
+            },
+            "data": {
+                "label": "Enviar Dados",
+                "icon": "📤",
+                "color": "#6366f1",
+                "blockType": "communication",
+                "blockId": "transmit",
+                "categoryKey": "communication",
+                "properties": {
+                    "frequency": 437.5,
+                    "power": 20,
+                    "dataRate": "9600 bps"
+                },
+                "inputs": 1,
+                "outputs": 1
+            }
+        },
+        {
+            "id": "node_1729000005_mno345",
+            "type": "customNode",
+            "position": {
+                "x": 600,
+                "y": 200
+            },
+            "data": {
+                "label": "Modo de Energia",
+                "icon": "⚡",
+                "color": "#eab308",
+                "blockType": "energy",
+                "blockId": "power_mode",
+                "categoryKey": "energy",
+                "properties": {
+                    "mode": "Economia"
+                },
+                "inputs": 1,
+                "outputs": 1
+            }
+        },
+        {
+            "id": "node_1729000006_pqr678",
+            "type": "customNode",
+            "position": {
+                "x": 850,
+                "y": 200
+            },
+            "data": {
+                "label": "Aguardar",
+                "icon": "⏱️",
+                "color": "#8b5cf6",
+                "blockType": "logic",
+                "blockId": "wait",
+                "categoryKey": "logic",
+                "properties": {
+                    "time": 300,
+                    "unit": "segundos"
+                },
+                "inputs": 1,
+                "outputs": 1
+            }
+        }
+    ],
+    "edges": [
+        {
+            "id": "edge_1",
+            "source": "node_1729000001_abc123",
+            "target": "node_1729000002_def456",
+            "animated": true,
+            "style": {
+                "stroke": "#06b6d4",
+                "strokeWidth": 2
+            }
+        },
+        {
+            "id": "edge_2",
+            "source": "node_1729000002_def456",
+            "target": "node_1729000003_ghi789",
+            "animated": true,
+            "style": {
+                "stroke": "#06b6d4",
+                "strokeWidth": 2
+            }
+        },
+        {
+            "id": "edge_3",
+            "source": "node_1729000003_ghi789",
+            "target": "node_1729000004_jkl012",
+            "animated": true,
+            "style": {
+                "stroke": "#06b6d4",
+                "strokeWidth": 2
+            }
+        },
+        {
+            "id": "edge_4",
+            "source": "node_1729000002_def456",
+            "sourceHandle": "output-2",
+            "target": "node_1729000005_mno345",
+            "animated": true,
+            "style": {
+                "stroke": "#8b5cf6",
+                "strokeWidth": 2
+            }
+        },
+        {
+            "id": "edge_5",
+            "source": "node_1729000005_mno345",
+            "target": "node_1729000006_pqr678",
+            "animated": true,
+            "style": {
+                "stroke": "#06b6d4",
+                "strokeWidth": 2
+            }
+        }
+    ],
+    "version": "1.0",
+    "timestamp": "2025-10-16T12:00:00.000Z"
+}

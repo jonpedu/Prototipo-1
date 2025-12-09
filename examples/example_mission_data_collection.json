@@ -1,0 +1,201 @@
+{
+    "nodes": [
+        {
+            "id": "node_start",
+            "type": "customNode",
+            "position": {
+                "x": 50,
+                "y": 200
+            },
+            "data": {
+                "label": "Repetir",
+                "icon": "🔁",
+                "color": "#8b5cf6",
+                "blockType": "logic",
+                "blockId": "loop",
+                "categoryKey": "logic",
+                "properties": {
+                    "iterations": 5,
+                    "type": "Fixo"
+                },
+                "inputs": 1,
+                "outputs": 1
+            }
+        },
+        {
+            "id": "node_camera",
+            "type": "customNode",
+            "position": {
+                "x": 300,
+                "y": 150
+            },
+            "data": {
+                "label": "Ativar Câmera",
+                "icon": "📷",
+                "color": "#10b981",
+                "blockType": "sensor",
+                "blockId": "camera",
+                "categoryKey": "sensors",
+                "properties": {
+                    "resolution": "1280x720",
+                    "exposure": 150,
+                    "format": "JPEG"
+                },
+                "inputs": 1,
+                "outputs": 1
+            }
+        },
+        {
+            "id": "node_temp",
+            "type": "customNode",
+            "position": {
+                "x": 300,
+                "y": 250
+            },
+            "data": {
+                "label": "Ler Temperatura",
+                "icon": "🌡️",
+                "color": "#10b981",
+                "blockType": "sensor",
+                "blockId": "temperature",
+                "categoryKey": "sensors",
+                "properties": {
+                    "frequency": 1,
+                    "unit": "Celsius"
+                },
+                "inputs": 1,
+                "outputs": 1
+            }
+        },
+        {
+            "id": "node_gps",
+            "type": "customNode",
+            "position": {
+                "x": 550,
+                "y": 200
+            },
+            "data": {
+                "label": "Ler GPS",
+                "icon": "🛰️",
+                "color": "#10b981",
+                "blockType": "sensor",
+                "blockId": "gps",
+                "categoryKey": "sensors",
+                "properties": {
+                    "precision": "Alta"
+                },
+                "inputs": 1,
+                "outputs": 1
+            }
+        },
+        {
+            "id": "node_transmit",
+            "type": "customNode",
+            "position": {
+                "x": 800,
+                "y": 200
+            },
+            "data": {
+                "label": "Enviar Dados",
+                "icon": "📤",
+                "color": "#6366f1",
+                "blockType": "communication",
+                "blockId": "transmit",
+                "categoryKey": "communication",
+                "properties": {
+                    "frequency": 437.5,
+                    "power": 25,
+                    "dataRate": "9600 bps"
+                },
+                "inputs": 1,
+                "outputs": 1
+            }
+        },
+        {
+            "id": "node_wait",
+            "type": "customNode",
+            "position": {
+                "x": 1050,
+                "y": 200
+            },
+            "data": {
+                "label": "Aguardar",
+                "icon": "⏱️",
+                "color": "#8b5cf6",
+                "blockType": "logic",
+                "blockId": "wait",
+                "categoryKey": "logic",
+                "properties": {
+                    "time": 5,
+                    "unit": "minutos"
+                },
+                "inputs": 1,
+                "outputs": 1
+            }
+        }
+    ],
+    "edges": [
+        {
+            "id": "e1",
+            "source": "node_start",
+            "target": "node_camera",
+            "animated": true,
+            "style": {
+                "stroke": "#06b6d4",
+                "strokeWidth": 2
+            }
+        },
+        {
+            "id": "e2",
+            "source": "node_start",
+            "target": "node_temp",
+            "animated": true,
+            "style": {
+                "stroke": "#06b6d4",
+                "strokeWidth": 2
+            }
+        },
+        {
+            "id": "e3",
+            "source": "node_camera",
+            "target": "node_gps",
+            "animated": true,
+            "style": {
+                "stroke": "#06b6d4",
+                "strokeWidth": 2
+            }
+        },
+        {
+            "id": "e4",
+            "source": "node_temp",
+            "target": "node_gps",
+            "animated": true,
+            "style": {
+                "stroke": "#06b6d4",
+                "strokeWidth": 2
+            }
+        },
+        {
+            "id": "e5",
+            "source": "node_gps",
+            "target": "node_transmit",
+            "animated": true,
+            "style": {
+                "stroke": "#06b6d4",
+                "strokeWidth": 2
+            }
+        },
+        {
+            "id": "e6",
+            "source": "node_transmit",
+            "target": "node_wait",
+            "animated": true,
+            "style": {
+                "stroke": "#06b6d4",
+                "strokeWidth": 2
+            }
+        }
+    ],
+    "version": "1.0",
+    "timestamp": "2025-10-16T12:30:00.000Z"
+}
