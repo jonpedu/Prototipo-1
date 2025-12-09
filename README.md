@@ -1,279 +1,316 @@
-# 🛰️ SatelliteProg - Interface de Programação Visual para Nanossatélites
+# 🛰️ PION CanSat Programmer
 
-![SatelliteProg](https://img.shields.io/badge/version-1.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+Interface visual de programação drag-and-drop para o Kit Educacional PION CanSat com ESP32. Programe seu nanossatélite sem escrever código!
 
-Uma interface visual de programação baseada em fluxo de dados para configuração e programação de nanossatélites educacionais. Inspirada em ferramentas como Orange Data Mining e BIPES.
+## 🚀 Início Rápido
 
-## 🌟 Características
-
-- **🎨 Interface Visual Intuitiva**: Sistema drag-and-drop para criar fluxos de programação
-- **📦 Biblioteca Rica de Blocos**: 
-  - Sensores (Câmera, Temperatura, GPS, Magnetômetro)
-  - Atuadores (Propulsores, Painéis Solares, LEDs)
-  - Comunicação (Transmissão/Recepção de dados)
-  - Lógica (Condicionais, Loops, Temporizadores)
-  - Tarefas Autônomas (Manutenção de órbita, Coleta de dados)
-  - Gerenciamento de Energia
-- **⚙️ Configuração Dinâmica**: Painel de propriedades para cada bloco
-- **🐍 Geração de Código Python**: Conversão automática do fluxo visual para MicroPython
-- **💾 Salvar/Carregar Projetos**: Persistência de missões completas
-- **🔍 Pré-visualização em Tempo Real**: Visualização do código gerado
-- **🚀 Simulação**: Execução do código no backend Python
-
-## 📋 Pré-requisitos
-
-- **Node.js** 18+ e npm
-- **Python** 3.8+
-- Navegador moderno (Chrome, Firefox, Edge)
-
-## 🚀 Instalação e Execução
-
-### 1. Clone o repositório
-
-```bash
-cd "c:\Users\Usuário\Desktop\8 PERIODO\TCC\prototipo"
-```
-
-### 2. Instale as dependências do frontend
+### Executar Automaticamente
 
 ```powershell
-npm install
+# Execute o script de inicialização
+.\start.ps1
 ```
 
-### 3. Instale as dependências do backend
+O script irá:
+- ✅ Verificar Node.js e Python
+- ✅ Instalar dependências automaticamente
+- ✅ Iniciar frontend (Vite) e backend (Flask)
+- ✅ Abrir o navegador em http://localhost:3000
 
-```powershell
-cd server
-pip install -r requirements.txt
-cd ..
-```
-
-### 4. Execute o projeto
-
-#### Opção A: Executar ambos simultaneamente
-
-**Terminal 1 - Frontend:**
-```powershell
-npm run dev
-```
-
-**Terminal 2 - Backend:**
-```powershell
-npm run server
-```
-
-#### Opção B: Executar manualmente
+### Executar Manualmente
 
 **Frontend:**
 ```powershell
+npm install
 npm run dev
 ```
-Acesse: http://localhost:3000
 
-**Backend:**
+**Backend (em outro terminal):**
 ```powershell
 cd server
+pip install -r requirements.txt
 python app.py
 ```
-O backend estará em: http://localhost:5000
+
+Acesse: http://localhost:3000
+
+## 🎯 Características
+
+- **Programação Visual 100%** - Sem necessidade de escrever código
+- **13 Blocos Específicos PION CanSat** - Sensores BME280, MPU6050, LEDs, Buzzer, SD Card
+- **15 Blocos de Lógica** - Loops, condicionais, variáveis, operações matemáticas
+- **Conexão Serial Direta** - Upload de código via Web Serial API (USB)
+- **Projetos XML** - Salve e carregue suas missões
+- **Geração MicroPython** - Código otimizado para ESP32
+- **Simulação Local** - Teste sem hardware
+
+## 📦 Blocos Disponíveis
+
+### 🎬 Inicial
+- **🚀 Iniciar Missão** - Ponto de entrada obrigatório
+
+### 📡 Sensores (5 blocos)
+- **🌡️ Ler Temperatura** - BME280 (°C)
+- **💧 Ler Umidade** - BME280 (%)
+- **🌪️ Ler Pressão** - BME280 (hPa)
+- **📍 Ler Acelerômetro** - MPU6050 (X, Y, Z)
+- **🔋 Ler Bateria** - ADC Pin 34
+
+### 💡 Atuadores (3 blocos)
+- **💡 LED Branco** - Pin 25 (On/Off)
+- **🎨 LED RGB** - NeoPixel Pin 26 (cores RGB)
+- **🔊 Buzzer** - PWM Pin 27 (frequência Hz)
+
+### 💾 Dados (2 blocos)
+- **💾 Salvar no SD** - Grava dados em arquivo
+- **📡 Enviar WiFi** - Transmite dados via rede
+
+### 🧠 Lógica Completa (15 blocos)
+
+#### Controle de Fluxo
+- **⏱️ Aguardar** - Delay em segundos
+- **🔄 Loop Infinito** - Repetição contínua (container)
+- **🔢 Repetir N vezes** - Loop controlado (container)
+- **🔁 Enquanto (While)** - Loop condicional (container)
+- **🚪 Sair do Loop** - Break statement
+
+#### Condicionais
+- **❓ Se/Então** - If com valor fixo
+- **⚖️ Se Comparar** - Comparação entre variáveis
+
+#### Variáveis
+- **📝 Criar Variável** - Declaração e atribuição
+- **💾 Armazenar** - Copiar valores
+
+#### Matemática
+- **➕ Operação** - +, -, *, /, //, %, **
+- **📊 Calcular Média** - Média de múltiplos valores
+- **🔼 Incrementar** - ++, --, +=, -=
+
+#### Especiais
+- **🖨️ Print/Log** - Debug via console
+- **🎲 Número Aleatório** - Random entre min/max
+- **⏰ Timestamp** - Hora atual
 
 ## 📖 Como Usar
 
-### 1. Criando uma Missão
-
-1. **Arraste blocos** da biblioteca lateral esquerda para a área central
-2. **Conecte os blocos** clicando e arrastando das saídas (direita) para as entradas (esquerda)
-3. **Configure propriedades** clicando em cada bloco e ajustando no painel direito
-4. **Organize** o fluxo de forma lógica
-
-### 2. Gerando Código
-
-1. Clique no botão **"Gerar Código Python"** no canto inferior direito
-2. Visualize o código MicroPython gerado
-3. **Copie** ou **baixe** o código para uso posterior
-
-### 3. Executando Simulação
-
-1. Clique em **"Executar Simulação"**
-2. Observe os logs no console de simulação
-3. Veja os resultados da execução
-
-### 4. Salvando Projetos
-
-1. Clique em **"Salvar"** na barra superior
-2. O arquivo `.json` será baixado com toda a configuração da missão
-3. Use **"Abrir"** para carregar projetos salvos
-
-## 🏗️ Estrutura do Projeto
+### Interface Completa
 
 ```
-prototipo/
-├── src/
-│   ├── components/
-│   │   ├── App.jsx                 # Componente principal
-│   │   ├── BlockLibrary.jsx        # Biblioteca de blocos
-│   │   ├── FlowCanvas.jsx          # Área de desenho do fluxo
-│   │   ├── CustomNode.jsx          # Componente de nó customizado
-│   │   ├── PropertiesPanel.jsx     # Painel de propriedades
-│   │   ├── CodeViewer.jsx          # Visualizador de código
-│   │   ├── SimulationViewer.jsx    # Console de simulação
-│   │   └── Toolbar.jsx             # Barra de ferramentas
-│   ├── store/
-│   │   └── useStore.js             # Gerenciamento de estado (Zustand)
-│   ├── utils/
-│   │   └── blockDefinitions.js     # Definições dos blocos
-│   ├── main.jsx                    # Entry point
-│   └── index.css                   # Estilos globais
-├── server/
-│   ├── app.py                      # Backend Flask
-│   └── requirements.txt            # Dependências Python
-├── package.json
-├── vite.config.js
-├── tailwind.config.js
-└── README.md
+┌─────────────────────────────────────────────────────────────┐
+│  🛰️ CanSat Programmer                                       │
+│  [ESP32 ▼] [🔌 Conectar] [⬆ Upload] [💾 Salvar] [📁 Abrir] │
+├──────────────┬──────────────────────────┬──────────────────┤
+│              │                          │                  │
+│  📚 BLOCOS   │   🎨 ÁREA DE MISSÃO     │  ⚙️ PROPRIEDADES│
+│              │                          │                  │
+│  🎬 Inicial  │   Arraste blocos         │  Configure cada  │
+│  📡 Sensores │   e conecte aqui         │  bloco aqui      │
+│  💡 Atuadores│                          │                  │
+│  💾 Dados    │                          │                  │
+│  🧠 Lógica   │                          │                  │
+│              │                          │                  │
+└──────────────┴──────────────────────────┴──────────────────┘
 ```
 
-## 🎯 Blocos Disponíveis
+### Passo a Passo
 
-### 📡 Sensores
-- **Câmera**: Captura de imagens com configuração de resolução e exposição
-- **Temperatura**: Leitura de temperatura em diferentes unidades
-- **Magnetômetro**: Medição de campo magnético
-- **GPS**: Obtenção de coordenadas e altitude
+**1. Criar Missão**
+1. Arraste bloco **"🚀 Iniciar Missão"** (obrigatório)
+2. Adicione blocos de sensores, atuadores ou lógica
+3. Conecte clicando e arrastando entre os pontos
 
-### ⚙️ Atuadores
-- **Propulsor**: Controle de propulsão com direção e potência
-- **Painel Solar**: Abertura e orientação de painéis
-- **LED de Status**: Indicadores visuais configuráveis
+**2. Configurar Blocos**
+- Clique em um bloco
+- Ajuste propriedades no painel direito
+- Ex: nome de variável, tempo de espera, cores RGB
 
-### 📶 Comunicação
-- **Transmitir Dados**: Envio de telemetria para estação terrestre
-- **Receber Comando**: Aguardar comandos da Terra
+**3. Conectar ao ESP32**
+1. Conecte ESP32 via USB
+2. Clique **"🔌 Conectar"**
+3. Selecione porta COM (Web Serial API)
+4. Status muda para verde ✅
 
-### 🔀 Lógica
-- **Condição (If/Else)**: Execução condicional
-- **Aguardar**: Temporizadores
-- **Loop**: Repetições fixas ou infinitas
+**4. Enviar Código**
+1. Clique **"⬆ Upload"**
+2. Código MicroPython é gerado e enviado
+3. ESP32 executa automaticamente
 
-### 🤖 Tarefas Autônomas
-- **Manter Órbita**: Controle automático de altitude
-- **Coletar Dados**: Aquisição automatizada de sensores
-- **Emergência**: Beacon de emergência
+**5. Salvar Projeto**
+- Clique **"💾 Salvar"** → Exporta XML
+- Clique **"📁 Abrir"** → Importa XML
 
-### 🔋 Energia
-- **Verificar Bateria**: Monitoramento de carga
-- **Modo de Energia**: Ajuste de consumo
+## 💡 Exemplos Práticos
 
-## 🛠️ Tecnologias Utilizadas
-
-### Frontend
-- **React** 18 - Framework UI
-- **React Flow** - Biblioteca de diagramação visual
-- **Zustand** - Gerenciamento de estado
-- **Tailwind CSS** - Estilização
-- **Vite** - Build tool
-- **Lucide React** - Ícones
-- **React Syntax Highlighter** - Highlight de código
-
-### Backend
-- **Python** 3.8+
-- **Flask** - Framework web
-- **Flask-CORS** - Cross-Origin Resource Sharing
-
-## 🎨 Personalização
-
-### Adicionando Novos Blocos
-
-Edite `src/utils/blockDefinitions.js`:
-
-```javascript
-{
-  id: 'meu_bloco',
-  type: 'sensor',
-  label: 'Meu Sensor',
-  icon: '🔧',
-  color: '#10b981',
-  inputs: 1,
-  outputs: 1,
-  properties: {
-    parametro: { 
-      type: 'number', 
-      label: 'Parâmetro', 
-      min: 0, 
-      max: 100, 
-      default: 50 
-    }
-  },
-  code: (props) => `
-# Código gerado
-sensor = MeuSensor(parametro=${props.parametro})
-`
-}
+### Exemplo 1: Estação Meteorológica
+```
+🚀 Iniciar Missão
+    ↓
+🔄 Loop Infinito (intervalo: 10s)
+    ↓
+🌡️ Ler Temperatura → var: temp
+    ↓
+💧 Ler Umidade → var: umid
+    ↓
+💾 Salvar no SD → arquivo: dados.txt
+    ↓
+⏱️ Aguardar 10s
 ```
 
-## 🐛 Resolução de Problemas
+### Exemplo 2: Alerta de Temperatura
+```
+🚀 Iniciar Missão
+    ↓
+🔄 Loop Infinito (intervalo: 5s)
+    ↓
+🌡️ Ler Temperatura → var: temp
+    ↓
+❓ Se temp > 30
+    ↓ Sim          ↓ Não
+💡 LED Branco    ⏱️ Aguardar 5s
+   (ligar)
+```
 
-### Frontend não inicia
+### Exemplo 3: Contador com Display
+```
+🚀 Iniciar Missão
+    ↓
+📝 Criar Variável → contador = 0
+    ↓
+🔢 Repetir 10 vezes
+    ↓
+🎨 LED RGB → cor baseada em contador
+    ↓
+🖨️ Print → "Contador: {contador}"
+    ↓
+🔼 Incrementar → contador++
+    ↓
+⏱️ Aguardar 1s
+```
+
+## 🔧 Requisitos
+
+### Software
+- **Node.js** 18+ → [Download](https://nodejs.org)
+- **Python** 3.8+ → [Download](https://python.org)
+- **Navegador** Chrome, Edge ou Opera (Web Serial API)
+
+### Hardware
+- **PION CanSat Kit** ou **ESP32 DevKit**
+- **Sensores** BME280 (I2C), MPU6050 (I2C)
+- **Cabo USB** para ESP32
+- **Driver** CH340 ou CP2102 (se necessário)
+
+### Dependências Python
 ```powershell
-# Limpe o cache e reinstale
-Remove-Item -Recurse -Force node_modules
-Remove-Item package-lock.json
+cd server
+pip install Flask Flask-CORS python-dotenv
+```
+
+### Dependências Node.js
+```powershell
 npm install
 ```
 
-### Backend não conecta
-- Verifique se a porta 5000 está livre
-- Confirme que as dependências Python estão instaladas
-- Verifique o firewall
+## 🛠️ Solução de Problemas
 
-### Blocos não aparecem
-- Verifique o console do navegador (F12)
-- Confirme que `blockDefinitions.js` está correto
+### Erro: "Conectar" não funciona
+- ✅ Use Chrome, Edge ou Opera (Web Serial API)
+- ✅ Instale driver CH340/CP2102 para ESP32
+- ✅ Verifique conexão USB
+- ✅ Feche outros programas usando a porta serial
 
-## 📝 Exemplos de Missões
+### Erro: Backend não inicia
+```powershell
+cd server
+pip install -r requirements.txt
+python app.py
+```
 
-### Missão 1: Captura de Imagem e Transmissão
-1. Ativar Câmera (resolução 1920x1080)
-2. Aguardar (5 segundos)
-3. Transmitir Dados (437.5 MHz)
+### Erro: Frontend não carrega
+```powershell
+npm install
+npm run dev
+```
 
-### Missão 2: Monitoramento de Temperatura
-1. Loop (10 vezes)
-2. Ler Temperatura
-3. Se temperatura > 50°C
-   - Transmitir Emergência
-4. Aguardar (60 segundos)
+### Porta 3000 ou 5000 ocupada
+```powershell
+# Mudar porta Vite: editar vite.config.js
+# Mudar porta Flask: editar server/app.py
+```
 
-## 🤝 Contribuindo
+### Upload falha
+- Verifique se ESP32 está em modo bootloader
+- Pressione botão BOOT ao conectar
+- Reinstale driver USB
 
-Contribuições são bem-vindas! Para contribuir:
+## 📁 Estrutura do Projeto
 
-1. Fork o projeto
-2. Crie uma branch (`git checkout -b feature/MinhaFeature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/MinhaFeature`)
-5. Abra um Pull Request
+```
+Prototipo-1/
+├── src/
+│   ├── App.jsx                   # Aplicação principal
+│   ├── components/
+│   │   ├── BlockLibrary.jsx      # Biblioteca de blocos lateral
+│   │   ├── FlowCanvas.jsx        # Canvas com React Flow
+│   │   ├── CustomNode.jsx        # Renderização de blocos
+│   │   ├── PropertiesPanel.jsx   # Painel de propriedades
+│   │   ├── Toolbar.jsx           # Barra superior
+│   │   ├── CodeViewer.jsx        # Visualizador de código
+│   │   ├── SerialMonitor.jsx     # Monitor serial
+│   │   └── SimulationViewer.jsx  # Simulação
+│   ├── store/
+│   │   └── useStore.js           # Estado global (Zustand)
+│   └── utils/
+│       ├── blockDefinitions.js   # 28 blocos definidos
+│       ├── serialConnection.js   # Web Serial API
+│       └── xmlUtils.js           # Import/Export XML
+│
+├── server/
+│   ├── app.py                    # Backend Flask
+│   └── requirements.txt          # Dependências Python
+│
+├── examples/
+│   ├── example_mission_battery_management.json
+│   └── example_mission_data_collection.json
+│
+├── start.ps1                     # Script de inicialização
+├── package.json                  # Dependências Node.js
+├── vite.config.js                # Config Vite
+└── README.md                     # Este arquivo
+```
+
+## 📚 Documentação Técnica
+
+- **[LOGIC_BLOCKS_GUIDE.md](LOGIC_BLOCKS_GUIDE.md)** - Guia detalhado dos 15 blocos de lógica com exemplos
+- **[VISUAL_GUIDE.md](VISUAL_GUIDE.md)** - Guia visual da interface com diagramas ASCII
+- **[WEB_SERIAL_INTEGRATION.md](WEB_SERIAL_INTEGRATION.md)** - Documentação da integração Web Serial API
+- **[XML_FORMAT_GUIDE.md](XML_FORMAT_GUIDE.md)** - Especificação do formato XML para projetos
+
+## 🎓 Uso Educacional
+
+Este projeto foi desenvolvido para:
+- ✅ Ensino de lógica de programação sem código
+- ✅ Introdução a sistemas embarcados (ESP32)
+- ✅ Aprendizado de sensores e atuadores
+- ✅ Projetos de CanSat educacionais
+- ✅ Competições de robótica/satélites
+
+## 🔒 Segurança
+
+- ✅ Código processado localmente
+- ✅ Sem envio de dados externos
+- ✅ Conexão serial direta (navegador ↔ ESP32)
+- ✅ Validação de blocos antes do upload
 
 ## 📄 Licença
 
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+Projeto educacional desenvolvido para TCC.
 
-## 👥 Autores
+## 🤝 Contribuições
 
-- Desenvolvido como parte do TCC - 8º Período
-
-## 🙏 Agradecimentos
-
-- Inspirado em [Orange Data Mining](https://orangedatamining.com/)
-- Inspirado em [BIPES](https://bipes.net.br/)
-- Comunidade React Flow
-- Projeto educacional de nanossatélites
-
-## 📞 Contato
-
-Para dúvidas ou sugestões, abra uma issue no repositório.
+Sugestões e melhorias são bem-vindas! Este é um projeto educacional open-source.
 
 ---
 
-**⭐ Se este projeto foi útil, considere dar uma estrela!**
+**Desenvolvido com ❤️ para educação em tecnologia espacial e sistemas embarcados**
